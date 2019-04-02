@@ -1,0 +1,12 @@
+{% macro categoryFields(form) %}
+  {{ form.id }}
+
+  <fieldset>
+    {{ form.name.label }}
+    {{ form.name(**kwargs)|safe }}
+  </fieldset>
+
+  <fieldset>
+    {{ form.save(class="btn")|safe }}
+  </fieldset>
+{% endmacro %}

@@ -1,0 +1,32 @@
+{% macro bookFields(form) %}
+  {{ form.id(**kwargs)|safe }}
+
+  <fieldset>
+    {{ form.title.label }}
+    {{ form.title(**kwargs)|safe }}
+  </fieldset>
+
+  <fieldset>
+    {{ form.author.label }}
+    {{ form.author(**kwargs)|safe }}
+  </fieldset>
+
+  <fieldset>
+    {{ form.year.label }}
+    {{ form.year(**kwargs)|safe }}
+  </fieldset>
+
+  <fieldset>
+    {{ form.quantity.label }}
+    {{ form.quantity(**kwargs)|safe }}
+  </fieldset>
+
+  <fieldset>
+    {{ form.category.label }}
+    {{ form.category(**kwargs)|safe }}
+  </fieldset>
+
+  <fieldset>
+    {{ form.save(class="btn")|safe }}
+  </fieldset>
+{% endmacro %}

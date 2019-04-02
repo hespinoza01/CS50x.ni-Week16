@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+{% from 'macros/bookList.html' import bookList %}
+{% from 'macros/categoriesList.html' import categoriesList %}
+
+
+{% block body %}
+  <nav class="navbar">
+    <a href="#" class="tab active" data-goto="books-tab">Books</a>
+    <a href="#" class="tab" data-goto="categories-tab">Categories</a>
+  </nav>
+
+  <article class="header">
+    <form action="/" method="POST" id="header-searchForm" class="header-searchForm">
+      <input type="text" placeholder="Search book" name="q" id="searchInput">
+      <input type="submit" value="search">
+    </form>
+    <a href="#" id="btnNew" class="header-btnNew btn">New book</a>
+  </article>
+
+  <main id="content"></main>
+
+  <template id="books-tab">
+    {{ bookList(books) }}
+  </template>
+
+  <template id="categories-tab">
+    {{ categoriesList(categories) }}
+  </template>
+
+  <script>
+    const TABS = {};
+
+    function loadTab(tabname){
+      let container = document.getElementById('content'),
+          searchInput = document.getElementById('searchInput'),
+          btnNew = document.getElementById('btnNew');
+
+      container.innerHTML = TABS[tabname];
+      searchInput.placeholder = `Search ${tabname.split('-')[0]}`;
+      btnNew.textContent = `New ${(tabname === "books-tab") ? "book" : "category"}`;
+      btnNew.href = (tabname === "books-tab") ? "/book" : "/category";
+    }
+
+    Array.from(document.querySelectorAll('.tab')).forEach(node => {
+      const TAB = document.getElementById(node.getAttribute('data-goto'));
+
+      if(TAB){
+        TABS[TAB.id] = TAB.innerHTML;
+        TAB.remove();
+      }
+
+      if(node.classList.contains('active')) loadTab(node.getAttribute('data-goto'));
+
+      node.addEventListener('click', e => {
+        e.preventDefault();
+
+        let prevTab = document.querySelector('.tab.active'),
+            nextTab = e.target;
+
+        prevTab.classList.remove('active');
+        nextTab.classList.add('active');
+        loadTab(nextTab.getAttribute('data-goto'));
+      });
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% from 'macros/categoryFields.html' import categoryFields %}
+
+
+{% block body %}
+  <h1>Category info</h1>
+
+  <form class="form" method="POST">
+    {{ categoryFields(form) }}
+  </form>
+
+  <a href="/">back to home</a>
+
+{% endblock %}

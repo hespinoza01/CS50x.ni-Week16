@@ -1,0 +1,25 @@
+{% macro categoriesList(categories) %}
+
+  <div class="table-wrapper" style="width: 40vw">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th colspan="2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for category in categories %}
+          <tr>
+            <td>{{ category.id }}</td>
+            <td>{{ category.name }}</td>
+            <td><a href="/category/edit/{{ category.id }}">edit</a></td>
+            <td><a href="/category/delete/{{ category.id }}">delete</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endmacro %}

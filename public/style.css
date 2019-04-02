@@ -1,0 +1,145 @@
+:root{
+  --primary: royalblue;
+  --primary-alpha: rgba(65, 105, 225, .05);
+  --secondary: #fff;
+  --on-primary: #fff;
+  --on-secondary: #696969;
+  --box-shadow: 0 0 10px -5px #696969;
+  --border-color: #b9b9b9;
+}
+
+html, body, *, *::before, *::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  min-height: 100vh;
+  padding: 1rem;
+  font-family: sans-serif;
+  font-size: 16px;
+  color: var(--on-secondary);
+}
+
+a{
+  color: inherit;
+  text-decoration-style: dotted;
+}
+
+.navbar{
+  padding-left: 1rem;
+  box-shadow: var(--box-shadow);
+}
+
+.tab{
+  display: inline-block;
+  position: relative;
+  padding: .5rem 1rem;
+  margin-right: .5rem;
+  text-decoration: none;
+  text-align: center;
+  color: var(--on-secondary);
+}
+.tab.active{
+  color: var(--primary);
+  box-shadow: inset 0 -2.5px royalblue;
+}
+
+
+.header{
+  display: flex;
+  align-content: center;
+}
+.header, .navbar{ margin-bottom: 1.5rem; }
+.header-searchForm{
+  margin-right: .5rem;
+  font-size: 16px;
+}
+.header-searchForm input{ font-size: inherit; }
+.header-searchForm input[type="text"]{
+  padding: .5rem;
+  background-color: var(--secondary);
+  color: var(--primary);
+  border: 1px solid transparent;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+}
+.header-searchForm input[type="text"]:focus{
+  border-color: var(--primary);
+}
+
+input[type="submit"], button, .btn{
+  padding: .5rem;
+  background-color: var(--primary);
+  color: var(--on-primary);
+  border: none;
+  border-radius: 5px;
+  font-size: inherit;
+  cursor: default;
+  transform: scale(1);
+  transition: .25s transform;
+  text-decoration: none;
+}
+input[type="submit"]:active, button:active, .btn:active{
+  transform: scale(0.95);
+}
+
+
+.table-wrapper{
+  overflow: hidden;
+  width: 80vw;
+  height: 75vh;
+  margin: 0 auto;
+  box-shadow: var(--box-shadow);
+  border-radius: 5px;
+}
+table{
+  width: inherit;
+  border-collapse: collapse;
+}
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 5px;
+}
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 5px;
+}
+thead{
+  background-color: royalblue;
+  color: var(--on-primary);
+}
+td, th{
+  padding: .25rem .5rem;
+  text-align: center;
+}
+tbody tr:nth-child(even){
+  background-color: var(--primary-alpha);
+}
+
+
+/*  FORM STYLES  */
+.form{
+  width: 35vw;
+  padding: 1.5rem 2rem;
+  margin: 2rem auto;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+}
+
+.form fieldset{
+  border: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 1.5rem;
+}
+.form input[type="text"], .form select{
+  display: block;
+  width: 100%;
+  padding: .5rem 1rem;
+  margin-top: 1rem;
+  background-color: var(--secondary);
+  color: var(--primary);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  font-size: 16px;
+}

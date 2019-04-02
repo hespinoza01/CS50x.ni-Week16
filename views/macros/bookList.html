@@ -1,0 +1,31 @@
+{% macro bookList(books) %}
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Year</th>
+          <th>Quantity</th>
+          <th>Category</th>
+          <th colspan="2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for book in books %}
+          <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.year }}</td>
+            <td>{{ book.quantity }}</td>
+            <td>{{ book.category.name }}</td>
+            <td><a href="/book/edit/{{ book.id }}">edit</a></td>
+            <td><a href="/book/delete/{{ book.id }}">delete</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endmacro %}
